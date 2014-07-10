@@ -88,8 +88,9 @@ This will ensure that application cache invalidates whenever actual file content
 
 
     gulp.task('manifest', function(){
-      gulp.src(['build/*'])
+      gulp.src(['../client/resources/build/**/*'])
         .pipe(manifest({
+	  relativePath: '/resources/build'
           hash: true,
           preferOnline: true,
           network: ['http://*', 'https://*', '*'],
@@ -105,13 +106,13 @@ This will ensure that application cache invalidates whenever actual file content
     CACHE MANIFEST
 
     CACHE:
-    js/app.js
-    css/style
-    css/style.css
-    js/zepto.min.js
-    js/script.js
-    some_files/index.html
-    some_files/about.html
+    /resources/build/js/app.js
+    /resources/build/css/style
+    /resources/build/css/style.css
+    /resources/build/js/zepto.min.js
+    /resources/build/js/script.js
+    /resources/build/some_files/index.html
+    /resources/build/some_files/about.html
 
     NETWORK:
     http://*
