@@ -1,6 +1,6 @@
 {
   "name": "gulp-appcache",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generate HTML5 Cache Manifest files with relative path",
   "main": "index.js",
   "scripts": {

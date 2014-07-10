@@ -11,10 +11,8 @@ Visit the [HTML 5 Guide to AppCache](http://www.html5rocks.com/en/tutorials/appc
 
 ## Usage
 
-First, install `gulp-manifest` as a dev dependency
-
 ```shell
-npm install gulp-manifest --save-dev
+npm install gulp-appcache
 ```
 
 ## API
