@@ -1,0 +1,13 @@
+{
+    "esversion": 8,
+    "-W003": true,
+    "-W004": true,
+    "-W014": true,
+    "-W061": true,
+    "-W083": true,
+    "-W084": true,
+    "-W086": true,
+    "globals": {
+        "require": true
+    }
+}
