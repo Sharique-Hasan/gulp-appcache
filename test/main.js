@@ -1,13 +1,13 @@
-var fs             = require('fs'),
-    path           = require('path'),
-    es             = require('event-stream'),
-    should         = require('should'),
-    gutil          = require('gulp-util'),
-    mocha          = require('mocha'),
-    manifestPlugin = require('../');
+var es = require('event-stream'),
+    fs = require('fs'),
+    mocha = require('mocha'),
+    manifestPlugin = require('../'),
+    path = require('path'),
+    should = require('should'),
+    Vinyl = require('vinyl');
 
 function createFakeFile(filename) {
-  return new gutil.File({
+  return new Vinyl({
     path: path.resolve('test/fixture/' + filename),
     cwd: path.resolve('test/'),
     base: path.resolve('test/fixture/'),
@@ -29,7 +29,7 @@ describe('gulp-manifest', function() {
     });
 
     stream.on('data', function(data) {
-      data.should.be.an.instanceOf(gutil.File);
+      data.should.be.an.instanceOf(Vinyl);
       data.relative.should.eql('cache.manifest');
 
       var contents = data.contents.toString();
@@ -58,7 +58,7 @@ describe('gulp-manifest', function() {
     });
     stream.once('end', done);
 
-    stream.write(new gutil.File({
+    stream.write(new Vinyl({
         path: path.resolve('test\\fixture\\hello.js'),
         cwd: path.resolve('test/'),
         base: path.resolve('test/'),
@@ -111,7 +111,7 @@ describe('gulp-manifest', function() {
     });
 
     stream.on('data', function(data) {
-      data.should.be.an.instanceOf(gutil.File);
+      data.should.be.an.instanceOf(Vinyl);
       data.relative.should.eql('cache.manifest');
 
       var contents = data.contents.toString();

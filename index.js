@@ -1,12 +1,12 @@
 
 var crypto = require('crypto'),
     es = require('event-stream'),
-    log = require('log'),
+    log = require('fancy-log'),
     path = require('path'),
     pluginError = require('plugin-error'),
     slash = require('slash'),
     through = require('through'),
-    vinyl = require('vinyl'),
+    Vinyl = require('vinyl'),
     lineBreak = '\n';
 
 function manifest(options) {
