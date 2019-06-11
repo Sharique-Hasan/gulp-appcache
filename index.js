@@ -87,7 +87,7 @@ function manifest(options) {
       cwd: cwd,
       base: cwd,
       path: path.join(cwd, filename),
-      contents: new Buffer(contents.join(lineBreak))
+      contents: new Buffer.from(contents.join(lineBreak))
     });
 
     this.emit('data', manifestFile);

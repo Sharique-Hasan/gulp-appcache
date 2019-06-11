@@ -11,7 +11,7 @@ function createFakeFile(filename) {
     path: path.resolve('test/fixture/' + filename),
     cwd: path.resolve('test/'),
     base: path.resolve('test/fixture/'),
-    contents: new Buffer('notimportant')
+    contents: new Buffer.from('notimportant')
   });
 }
 
@@ -62,7 +62,7 @@ describe('gulp-manifest', function() {
         path: path.resolve('test\\fixture\\hello.js'),
         cwd: path.resolve('test/'),
         base: path.resolve('test/'),
-        contents: new Buffer('notimportant')
+        contents: new Buffer.from('notimportant')
     }));
 
     stream.end();
