@@ -1,11 +1,12 @@
-"use strict";
 
-var es        = require('event-stream'),
-    through   = require('through'),
-    gutil     = require('gulp-util'),
-    crypto    = require('crypto'),
-    path      = require('path'),
-    slash     = require('slash'),
+var crypto = require('crypto'),
+    es = require('event-stream'),
+    log = require('log'),
+    path = require('path'),
+    pluginError = require('plugin-error'),
+    slash = require('slash'),
+    through = require('through'),
+    vinyl = require('vinyl'),
     lineBreak = '\n';
 
 function manifest(options) {
@@ -30,7 +31,7 @@ function manifest(options) {
 
   function writeToManifest(file) {
     if (file.isNull())   return;
-    if (file.isStream()) return this.emit('error', new gutil.PluginError('gulp-manifest',  'Streaming not supported'));
+    if (file.isStream()) return this.emit('error', new pluginError.PluginError('gulp-manifest',  'Streaming not supported'));
 
     if (exclude.indexOf(file.relative) >= 0) {
       return;
@@ -59,7 +60,7 @@ function manifest(options) {
       options.fallback.forEach(function (file) {
         var firstSpace = file.indexOf(' ');
         if(firstSpace === -1) {
-          return gutil.log('Invalid format for FALLBACK entry', file);
+          return log('Invalid format for FALLBACK entry', file);
         }
         contents.push(
           encodeURI(file.substring(0, firstSpace)) +
@@ -82,7 +83,7 @@ function manifest(options) {
     }
 
     var cwd = process.cwd();
-    var manifestFile = new gutil.File({
+    var manifestFile = new Vinyl({
       cwd: cwd,
       base: cwd,
       path: path.join(cwd, filename),
