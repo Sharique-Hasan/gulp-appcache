@@ -21,7 +21,7 @@
   "edited": "Sharique Hasan",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "mocha": "^6.1.4",
+    "mocha": "^10.2.0",
     "should": "~2.1.1"
   },
   "dependencies": {
